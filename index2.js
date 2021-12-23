@@ -87,10 +87,7 @@ const json2csvParserWithCustomTitles = new Parser({ fields });
 const csvWithCustomTitles = json2csvParserWithCustomTitles.parse(catJsonData);
 
 // Creates a CSV file
-fs.writeFile("./csvFiles/indexTwoCats.csv", csvWithCustomTitles, "utf8", function (err) {
-    if (err) {
-        console.log('Error :' + err);
-    } else{
-        console.log('File saved.');
-    }
+fs.writeFile("./csvFiles/indexTwoCats.csv", csvWithCustomTitles, "utf8", (err) => {
+    if (err) console.log('Error :' + err);
+    else console.log('File saved.');
 });
