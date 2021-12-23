@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { Parser } = require('json2csv');
 const catJsonData = require('./data/cats.json');
+const catJsonDataTwo = require('./data/catsTwo.json');
 
 // This file contains three implementations of creating CSV files
 // The first implementation creates a CSV file with no modifications to the data
@@ -12,13 +13,13 @@ const catJsonData = require('./data/cats.json');
 
 // ****** FIRST IMPLEMENTATION ****** //
 
-// Creates a parser to parse the data
+// Create a parser to parse the data
 const json2csvParser = new Parser();
 
-// Parses the data (this is synchronous)
+// Parse the data (this is synchronous)
 const csvData = json2csvParser.parse(catJsonData);
 
-// Creates a CSV file (from the parsed JSON data)
+// Create a CSV file (from the parsed JSON data)
 fs.writeFile("./csvFiles/indexCatsFromJson.csv", csvData, (err) => {
     if (err) console.log('Error :' + err);
     else console.log('File saved.');
@@ -32,18 +33,26 @@ fs.writeFile("./csvFiles/indexCatsFromJson.csv", csvData, (err) => {
 // This will only include the name and age properties
 const fields = ['name', 'age'];
 
-// Creates a parser to parse the data
+// Create a parser to parse the data
 const json2csvParserWithSelectColumns = new Parser({ fields });
 
-// Parses the data (this is synchronous)
+// Parse the data (this is synchronous)
 const csvDataWithSelectColumns = json2csvParserWithSelectColumns.parse(catJsonData);
 
-// Creates a CSV file (from the parsed JSON data)
+// Create a CSV file (from the parsed JSON data)
 fs.writeFile("./csvFiles/indexCatsWithSelectColumns.csv", csvDataWithSelectColumns, (err) => {
     if (err) console.log('Error :' + err);
     else console.log('File saved.');
 });
 
+
+// Append data from a second file to the original file
+const csvDataTwo = json2csvParser.parse(catJsonDataTwo);
+
+fs.appendFile('./csvFiles/indexCatsWithSelectColumns.csv', csvDataTwo, err => {
+    if (err) console.log('Error :' + err);
+    else console.log('File saved.');
+})
 
 
 // ****** THIRD IMPLEMENTATION ****** //
