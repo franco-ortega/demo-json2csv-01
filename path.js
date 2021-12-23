@@ -38,3 +38,30 @@ console.log({ absolutePathWithParameterFolder });
 
 const normalPath = path.normalize('/foods/../favorites/pizza.csv');
 console.log({ normalPath });
+
+
+// Create a path from an object
+// root is ignored if dir is provided
+// ext and name are ignored if base exists
+const object = {
+    dir: '/Objects/square',
+    base: 'box.txt'
+};
+
+const objectPath = path.format(object);
+console.log({ objectPath });
+
+const objectTwo = {
+    root: '/Objects/round/',
+    name: 'circle',
+    ext: '.txt'
+};
+
+const objectPathTwo = path.format(objectTwo);
+console.log({ objectPathTwo });
+
+
+// Parse a path to an object
+// root, dir, base, ext, name
+const parsedPath = path.parse('/Objects/oval/egg.txt');
+console.log({ parsedPath });
