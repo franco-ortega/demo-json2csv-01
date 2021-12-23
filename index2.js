@@ -50,9 +50,9 @@ const catJsonData = require('./data/cats.json');
 // "age" will be included; its column title will be unchanged, but its default is "FUREVER YOUNG"
 // "fur" will be included with a custom column title of "Fur Color", and its default is "FURLESS"
 // "food" will be included, but there is no "food" property in the data, so there will be no data to display
-    // however, a default is provided, so the default of "HUNGRY" will be entered into the rows
+    // however, a default is provided, so the default of "HUNGRY" will be entered into the rows of this column
 // "owner" will be included, but there is no "owner" property in the data, so there will be no data to display
-    // additionally, no default is provided, so these rows will be empty
+    // additionally, no default is provided, so these rows in this column will be empty
 // "owner" is included as a field, but there is no "owner" property in the data, and no default is provided, so these rows will be left empty
 
 
