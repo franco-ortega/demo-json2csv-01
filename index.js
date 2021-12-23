@@ -26,3 +26,28 @@ fs.writeFile("./csvFiles/indexCatsFromJson.csv", csvData, "utf8", function (err)
         console.log('File saved.');
     }
 });
+
+
+
+// ****** SECOND IMPLEMENTATION ****** //
+// This implemenation utilizes the fields property (an array of strings) to select the specific properties that will be included (as columns) in the file; all other properties will be omitted
+
+// This will only include the name and age properties
+const fields = ['name', 'age'];
+
+// Creates a parser to parse the data
+const json2csvParserWithSelectColumns = new Parser({ fields });
+
+// Parses the data (this is synchronous)
+const csvDataWithSelectColumns = json2csvParserWithSelectColumns.parse(catJsonData);
+
+// Creates a CSV file (from the parsed JSON data)
+fs.writeFile("./csvFiles/indexCatsWithSelectColumns.csv", csvDataWithSelectColumns, "utf8", function (err) {
+    if (err) console.log('Error :' + err);
+    else console.log('File saved.');
+});
+
+
+
+// ****** THIRD IMPLEMENTATION ****** //
+// See index2.js for this implementation
