@@ -19,7 +19,7 @@ const json2csvParser = new Parser();
 const csvData = json2csvParser.parse(catJsonData);
 
 // Creates a CSV file (from the parsed JSON data)
-fs.writeFile("./csvFiles/indexCatsFromJson.csv", csvData, "utf8", (err) => {
+fs.writeFile("./csvFiles/indexCatsFromJson.csv", csvData, (err) => {
     if (err) console.log('Error :' + err);
     else console.log('File saved.');
 });
@@ -39,7 +39,7 @@ const json2csvParserWithSelectColumns = new Parser({ fields });
 const csvDataWithSelectColumns = json2csvParserWithSelectColumns.parse(catJsonData);
 
 // Creates a CSV file (from the parsed JSON data)
-fs.writeFile("./csvFiles/indexCatsWithSelectColumns.csv", csvDataWithSelectColumns, "utf8", (err) => {
+fs.writeFile("./csvFiles/indexCatsWithSelectColumns.csv", csvDataWithSelectColumns, (err) => {
     if (err) console.log('Error :' + err);
     else console.log('File saved.');
 });
